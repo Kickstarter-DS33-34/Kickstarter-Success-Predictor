@@ -1,4 +1,4 @@
-# **Kickstart Success**
+# **Kickstarter Success**
 ## Feburary 2022
 
 ## ☝️ *Pitch*
