@@ -1,0 +1,18 @@
+#banner.major {
+    height: 20em;
+    min-height: 20em;
+    max-height: 20em;
+}
+
+#one.tiles {
+    height: 10em;
+    min-height: 10em;
+    max-height: 10em;
+}
+
+
+.tiles article {
+    height: 18em;
+    max-height: 18em;
+    min-height: 18em;
+}
