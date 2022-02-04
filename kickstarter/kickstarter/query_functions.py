@@ -22,16 +22,24 @@ CONN, CURSOR = connect_cursor()
 # Function that inputs the form data and a prediction
 # and commits the data to the PostgreSQL database.
 def insert_table(data_dict, prediction):
+    # Removing single quotes from strings
+    # to not upset the SQL query.
+    clean_dict = {}
+    for key, value in data_dict.items():
+        if isinstance(value, str):
+            clean_dict[key] = value.replace("'",'_')
+        else:
+            clean_dict[key] = value
     # Creating a tuple of the information to be inserted.
-    temp_tuple = (data_dict['project_name'], 
-                  data_dict['category'],
-                  data_dict['description'], 
-                  data_dict['city_name'], 
-                  data_dict['country'],
-                  data_dict['goal'], 
-                  data_dict['currency'], 
-                  int(data_dict['days_of_campaign']),
-                  int(data_dict['launch_month']),
+    temp_tuple = (clean_dict['project_name'], 
+                  clean_dict['category'],
+                  clean_dict['description'], 
+                  clean_dict['city_name'], 
+                  clean_dict['country'],
+                  clean_dict['goal'], 
+                  clean_dict['currency'], 
+                  int(clean_dict['days_of_campaign']),
+                  int(clean_dict['launch_month']),
                   prediction)
     # Inserting the tuple.
     CURSOR.execute(f'''

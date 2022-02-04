@@ -38,8 +38,11 @@ def create_app():
                 form_data = request.form
                 # Requesting the prediction from
                 # the simple web server built on heroku.
-                # URL - https://kick-model-ds3x.herokuapp.com/
                 x = requests.post(url='https://kick-model-ds3x.herokuapp.com/', data=form_data, timeout=120)
+                
+                # USED FOR TESTING LOCALLY
+                # x = requests.post(url='http://127.0.0.1:5000/', data=form_data, timeout=120)
+                
                 # Transforming the data from a string
                 # into a JSON object.
                 prediction = json.loads(x.text)
